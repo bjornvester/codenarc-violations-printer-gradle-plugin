@@ -1,4 +1,4 @@
-package com.github.bjornvester.codenarcprinter
+package io.github.bjornvester.codenarcprinter
 
 import org.gradle.api.logging.Logging
 import org.gradle.api.provider.MapProperty

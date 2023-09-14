@@ -2,7 +2,11 @@ plugins {
     `java-gradle-plugin`
     //id("org.jetbrains.kotlin.jvm") version "1.9.0"
     `kotlin-dsl`
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
+
+group = "io.github.bjornvester.codenarcprinter"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -32,8 +36,13 @@ testing {
 
 gradlePlugin {
     val codenarcprinter by plugins.creating {
-        id = "com.github.bjornvester.codenarcprinter"
+        id = "io.github.bjornvester.codenarcprinter"
+        displayName = "CodeNarc violations printer"
+        description = "A plugin that prints CodeNarc violations to the console at QUIET level"
+        tags.set(listOf("codenarc"))
         implementationClass = "com.github.bjornvester.codenarcprinter.CodenarcViolationsPrinterGradlePlugin"
+        website = "https://github.com/bjornvester/codenarc-violations-printer-gradle-plugin"
+        vcsUrl = "https://github.com/bjornvester/codenarc-violations-printer-gradle-plugin.git"
     }
 }
 
