@@ -40,7 +40,7 @@ gradlePlugin {
         displayName = "CodeNarc violations printer"
         description = "A plugin that prints CodeNarc violations to the console at QUIET level"
         tags.set(listOf("codenarc"))
-        implementationClass = "com.github.bjornvester.codenarcprinter.CodenarcViolationsPrinterGradlePlugin"
+        implementationClass = "io.github.bjornvester.codenarcprinter.CodenarcViolationsPrinterGradlePlugin"
         website = "https://github.com/bjornvester/codenarc-violations-printer-gradle-plugin"
         vcsUrl = "https://github.com/bjornvester/codenarc-violations-printer-gradle-plugin.git"
     }
