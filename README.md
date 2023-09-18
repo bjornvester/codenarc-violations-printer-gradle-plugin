@@ -8,4 +8,5 @@ Both of these options are usually annoying locally and not feasible in a CI envi
 
 See https://github.com/gradle/gradle/issues/20428 for a Gradle issue about this exact problem.
 
-NOTE: This plugin has not yet been published to the Gradle Plugin portal.
+## Usage
+See https://plugins.gradle.org/plugin/io.github.bjornvester.codenarcprinter.
