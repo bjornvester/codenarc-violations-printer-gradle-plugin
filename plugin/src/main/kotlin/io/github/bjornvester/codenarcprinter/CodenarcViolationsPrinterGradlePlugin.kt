@@ -13,14 +13,22 @@ abstract class CodenarcViolationsPrinterGradlePlugin : Plugin<Project> {
     abstract fun getEventsListenerRegistry(): BuildEventsListenerRegistry
 
     override fun apply(project: Project) {
+        project.gradle.taskGraph.whenReady {
+            val serviceProvider: Provider<TaskEventsService> = project.gradle.sharedServices.registerIfAbsent(
+                "CodenarcViolationsPrinter",
+                TaskEventsService::class.java
+            ) {
+                parameters.taskPathToReportFilePath.set(
+                    allTasks.filterIsInstance<CodeNarc>()
+                        .associate { it.path to it.reports.text.outputLocation.asFile.get() }
+                )
+            }
+            getEventsListenerRegistry().onTaskCompletion(serviceProvider) // Though we add the same instance for each task, it is only registered once
+        }
         project.tasks.withType(CodeNarc::class.java).configureEach {
             reports {
                 text.required.set(true)
             }
-
-            val serviceProvider: Provider<TaskEventsService> = project.gradle.sharedServices.registerIfAbsent("CodenarcViolationsPrinter", TaskEventsService::class.java) {}
-            serviceProvider.get().parameters.taskPathToReportFilePath.put(path, reports.text.outputLocation.asFile.get())
-            getEventsListenerRegistry().onTaskCompletion(serviceProvider) // Though we add the same instance for each task, it is only registered once
         }
     }
 }

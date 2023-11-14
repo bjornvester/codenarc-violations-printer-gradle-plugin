@@ -7,7 +7,7 @@ import kotlin.test.Test
 import kotlin.test.assertTrue
 
 /**
- * A simple functional test for the 'com.github.bjornvester.codenarcprinter.greeting' plugin.
+ * A simple functional test for the 'io.github.bjornvester.codenarcprinter' plugin.
  */
 class CodenarcViolationsPrinterGradlePluginFunctionalTest {
 
@@ -29,7 +29,7 @@ class CodenarcViolationsPrinterGradlePluginFunctionalTest {
             plugins {
                 id 'groovy'
                 id 'codenarc'
-                id 'com.github.bjornvester.codenarcprinter'
+                id 'io.github.bjornvester.codenarcprinter'
             }
             repositories {
                 mavenCentral()

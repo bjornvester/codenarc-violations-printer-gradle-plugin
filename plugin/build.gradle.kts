@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.bjornvester.codenarcprinter"
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()
@@ -38,7 +38,8 @@ gradlePlugin {
     val codenarcprinter by plugins.creating {
         id = "io.github.bjornvester.codenarcprinter"
         displayName = "CodeNarc violations printer"
-        description = "A plugin that prints CodeNarc violations to the console at QUIET level"
+        description = "Changes:\n" +
+                "  - Support for the configuration cache"
         tags.set(listOf("codenarc"))
         implementationClass = "io.github.bjornvester.codenarcprinter.CodenarcViolationsPrinterGradlePlugin"
         website = "https://github.com/bjornvester/codenarc-violations-printer-gradle-plugin"
